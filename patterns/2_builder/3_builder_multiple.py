@@ -59,11 +59,14 @@ class OfficialBuilder(PersonalBuilder):
         return self
     
 pb = PersonBuilder()
-pb.build_personal.called_as("karthik")\
-    .with_age("35")\
-    .born_at("Tenkasi")\
-    .build_official.works_at("Fabrikam")\
-    .with_title("Engineer")\
-    .with_salary("25000")
-
-print(pb.build())
+karthik = pb\
+    .build_personal\
+        .called_as("karthik")\
+        .with_age("35")\
+        .born_at("Tenkasi")\
+    .build_official\
+        .works_at("Fabrikam")\
+        .with_title("Engineer")\
+        .with_salary("25000")\
+        .build()
+print(karthik)
