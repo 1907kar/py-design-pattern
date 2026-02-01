@@ -15,12 +15,12 @@ class PersonBuilder:
     def build(self):
         return self.person
     
-class PersonalBuilder(PersonBuilder):
+class NameBuilder(PersonBuilder):
     def called_as(self, name):
         self.person.name = name
         return self
 
-class AgeBuilder(PersonalBuilder):
+class AgeBuilder(NameBuilder):
     def aged(self, age):
         self.person.age = age
         return self
@@ -29,11 +29,14 @@ class LocationBuilder(AgeBuilder):
     def born_at(self, location):
         self.person.location = location
         return self
+
+class CompileBuilder(LocationBuilder):
+    pass
     
-pb = LocationBuilder()
+pb = CompileBuilder()
 karthik = pb\
             .called_as("karthik")\
             .aged("35")\
             .born_at('Tenkasi')\
             .build()
-print(karthik )
+print(karthik)
